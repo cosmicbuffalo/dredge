@@ -5,6 +5,11 @@ session history. It incrementally indexes Claude Code and Codex transcripts and
 returns sessions ranked by text relevance and recency. It never contacts a
 network service and it does not resume or control sessions.
 
+Dredge uses [Tantivy](https://github.com/quickwit-oss/tantivy), an external
+open-source Rust full-text search library, as an embedded dependency for its
+on-disk index and text-relevance scoring. Tantivy is compiled into Dredge;
+there is no separate search server or service to install.
+
 This is the first usable release. Provider transcript formats are private,
 evolving implementation details; Dredge parses them defensively, skips unknown
 records, and treats a malformed line or one unreadable transcript as a local
@@ -56,10 +61,10 @@ The index is stored beneath:
 2. `$XDG_DATA_HOME/dredge`, when set; or
 3. `~/.local/share/dredge`.
 
-Dredge stores a Tantivy inverted index in `index/` and an atomic incremental
-refresh manifest in `manifest.json`. A file's normalized path, provider, size,
-and nanosecond mtime identify unchanged input. A schema mismatch or corrupt
-index is rebuilt safely. Concurrent refreshes are serialized with
+Dredge stores its Tantivy-backed inverted index in `index/` and an atomic
+incremental refresh manifest in `manifest.json`. A file's normalized path,
+provider, size, and nanosecond mtime identify unchanged input. A schema mismatch
+or corrupt index is rebuilt safely. Concurrent refreshes are serialized with
 `index.lock`.
 
 ## Privacy and safety limits
