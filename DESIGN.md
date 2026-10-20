@@ -75,11 +75,11 @@ require a new `api_version`.
   "results": [
     {
       "provider": "claude",
-      "session_id": "4db6b0d3-4747-4aab-8eac-6f0b83463eb5",
-      "title": "Pmux architecture and release readiness",
+      "session_id": "6f1c2d3e-4b5a-4c6d-8e7f-90a1b2c3d4e5",
+      "title": "Fix pane layouts on tmux 3.8",
       "title_source": "ai",
-      "first_prompt": "Review the release readiness work",
-      "cwd": "/home/me/pmux",
+      "first_prompt": "Why do splits break on tmux 3.8?",
+      "cwd": "/home/me/project",
       "git_branch": "main",
       "started_at": 1792000000,
       "updated_at": 1792090000,
