@@ -2,7 +2,7 @@
 
 All notable changes to Dredge are documented here.
 
-## 0.1.0 - 2026-10-16
+## 0.1.0 - 2026-10-22
 
 - Add incremental private Tantivy indexing for Claude Code and Codex history.
 - Add defensive transcript discovery, parsing, and conversation filtering.

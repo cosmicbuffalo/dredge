@@ -20,8 +20,10 @@ indexing failure rather than aborting the corpus.
 Dredge requires Rust 1.88 or newer.
 
 ```sh
-cargo install --path .
+cargo install --git https://github.com/cosmicbuffalo/dredge --tag v0.1.0 --locked
 ```
+
+From a checkout, `cargo install --path . --locked` installs the working tree.
 
 The Cargo package is `dredge-cli`; the installed executable is `dredge`.
 
