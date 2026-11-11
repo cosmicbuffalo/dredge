@@ -139,6 +139,11 @@ sh scripts/test-install.sh
 cargo package
 ```
 
+To release, bump `version` in `Cargo.toml` (and `Cargo.lock`) and add a
+matching `## X.Y.Z` section to `CHANGELOG.md` in a pull request. CI builds
+every release target on that pull request, and merging it into `main`
+publishes the release: binaries, checksums, provenance, and the `vX.Y.Z` tag.
+
 The implementation and its synthetic fixtures are original and do not copy
 source or fixtures from other agent-history search projects.
 
