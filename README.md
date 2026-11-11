@@ -17,10 +17,24 @@ indexing failure rather than aborting the corpus.
 
 ## Install
 
-Dredge requires Rust 1.88 or newer.
+Install a prebuilt binary (Linux x86_64/aarch64, macOS Intel/Apple silicon;
+no Rust needed):
 
 ```sh
-cargo install --git https://github.com/cosmicbuffalo/dredge --tag v0.1.0 --locked
+curl -fsSL https://raw.githubusercontent.com/cosmicbuffalo/dredge/main/install.sh | sh
+```
+
+The installer puts `dredge` in `~/.local/bin` and checks the binary against the
+release's `checksums.txt`; when an authenticated `gh` is available it also
+verifies GitHub build provenance. Set `DREDGE_VERSION` (e.g. `0.1.1`) to pin a
+release, `DREDGE_BIN_DIR` to choose the directory, or
+`DREDGE_VERIFY_ATTESTATION=1` to require the provenance check. Uninstall by
+deleting the binary.
+
+To build from source instead (Rust 1.88 or newer):
+
+```sh
+cargo install --git https://github.com/cosmicbuffalo/dredge --tag v0.1.1 --locked
 ```
 
 From a checkout, `cargo install --path . --locked` installs the working tree.
@@ -121,6 +135,7 @@ sequences removed.
 cargo fmt --check
 cargo clippy --all-targets -- -D warnings
 cargo test
+sh scripts/test-install.sh
 cargo package
 ```
 
